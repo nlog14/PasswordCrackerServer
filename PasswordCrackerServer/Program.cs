@@ -14,8 +14,6 @@ namespace PasswordCrackerServer
         {
             Console.WriteLine("This is the server");
 
-           
-
             TcpListener listener = new TcpListener(IPAddress.Any, 10000);
 
             listener.Start();

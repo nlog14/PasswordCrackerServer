@@ -59,6 +59,7 @@ namespace PasswordCrackerServer
             }
 
             writer.Flush();
+            socket.Close();
         }
 
         public static void SendPassword(TcpClient socket)
@@ -78,9 +79,7 @@ namespace PasswordCrackerServer
             }
 
             writer.Flush();
-            
         }
-
 
         public static List<string> ReadPasswordFile()
         {

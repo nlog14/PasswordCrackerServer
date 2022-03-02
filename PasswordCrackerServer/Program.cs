@@ -25,8 +25,6 @@ namespace PasswordCrackerServer
                 TcpClient socket = listener.AcceptTcpClient();
 
                 Task.Run(() => HandleClient(socket));
-
-              
             }
             listener.Stop();
         }
@@ -43,8 +41,10 @@ namespace PasswordCrackerServer
 
             if (ClientRequestPassword == "password")
             {
-                Console.WriteLine("password requested");
+                Console.WriteLine("Password requested");
                 SendPassword(socket);
+
+                Console.WriteLine("Password sent");
             }
 
             string ClientRequestDictionary = reader.ReadLine();
@@ -56,10 +56,11 @@ namespace PasswordCrackerServer
                 string path = "D:/ComputerScience_ED/2ndYearCS/4thSemester/ITSecurity";
 
                 socket.Client.SendFile(path + "\\" + "webster-dictionary.txt");
+
+                Console.WriteLine("Dictionary sent");
             }
 
             writer.Flush();
-            socket.Close();
         }
 
         public static void SendPassword(TcpClient socket)

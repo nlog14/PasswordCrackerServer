@@ -10,6 +10,8 @@ namespace PasswordCrackerServer
 {
     class Program
     {
+        static List<string> passwords = ReadPasswordFile(); 
+
         static void Main(string[] args)
         {
             Console.WriteLine("This is the server");
@@ -24,7 +26,7 @@ namespace PasswordCrackerServer
 
                 Task.Run(() => HandleClient(socket));
             }
-            listener.Stop();
+            //listener.Stop();
         }
 
         public static void HandleClient(TcpClient socket)
@@ -49,7 +51,7 @@ namespace PasswordCrackerServer
 
             if (ClientRequestDictionary == "dictionary")
             {
-                Console.WriteLine("dictionary requested");
+                Console.WriteLine("Dictionary requested");
 
                 string path = "D:/ComputerScience_ED/2ndYearCS/4thSemester/ITSecurity";
 
@@ -57,7 +59,6 @@ namespace PasswordCrackerServer
 
                 Console.WriteLine("Dictionary sent");
             }
-
             writer.Flush();
             socket.Close();
         }
@@ -67,9 +68,7 @@ namespace PasswordCrackerServer
             NetworkStream ns = socket.GetStream();
             StreamWriter writer = new StreamWriter(ns);
 
-            writer.WriteLine("here is the password");
-
-            var passwords = ReadPasswordFile();
+            //var passwords = ReadPasswordFile();
             writer.WriteLine(passwords[0]);
             passwords.RemoveAt(0);
 
@@ -77,7 +76,6 @@ namespace PasswordCrackerServer
             {
                 Console.WriteLine("List is empty. No more passwords available");
             }
-
             writer.Flush();
         }
 

@@ -73,6 +73,12 @@ namespace PasswordCrackerServer
             var passwords = ReadPasswordFile();
             writer.WriteLine(passwords[0]);
             passwords.RemoveAt(0);
+
+            if (passwords.Count == 0)
+            {
+                Console.WriteLine("List is empty .No more passwords available");
+            }
+
             writer.Flush();
             
         }

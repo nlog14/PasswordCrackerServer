@@ -76,7 +76,7 @@ namespace PasswordCrackerServer
 
             if (passwords.Count == 0)
             {
-                Console.WriteLine("List is empty .No more passwords available");
+                Console.WriteLine("List is empty. No more passwords available");
             }
 
             writer.Flush();
